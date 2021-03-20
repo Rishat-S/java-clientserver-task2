@@ -22,11 +22,13 @@ public class ServerApp {
                     if (byteCount == -1) {
                         break;
                     }
-                    final String msg = new String(inputBuffer.array(), 0, byteCount,
+                    String msg = new String(inputBuffer.array(), 0, byteCount,
                             StandardCharsets.UTF_8);
                     inputBuffer.clear();
                     System.out.println("Received message from client: " + msg);
-                    socketChannel.write(ByteBuffer.wrap(("Эхо: " + msg).getBytes(StandardCharsets.UTF_8)));
+                    msg = ExtraSpacesTrim.extraTrim(msg);
+                    System.out.println("Formatted message: " + msg);
+                    socketChannel.write(ByteBuffer.wrap(("Formatted message from the server: " + msg).getBytes(StandardCharsets.UTF_8)));
                 }
             } catch (IOException e) {
                 System.out.println(e.getMessage());
