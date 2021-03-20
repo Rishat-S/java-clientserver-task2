@@ -9,6 +9,8 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class ClientApp {
+
+
     public static void main(String[] args) throws IOException {
         InetSocketAddress socketAddress = new InetSocketAddress(Constants.HOSTNAME, Constants.PORT);
         final SocketChannel socketChannel = SocketChannel.open();
@@ -26,7 +28,7 @@ public class ClientApp {
                 }
 
                 socketChannel.write(ByteBuffer.wrap(msg.getBytes(StandardCharsets.UTF_8)));
-                TimeUnit.SECONDS.sleep(2);
+                TimeUnit.SECONDS.sleep(Constants.TIMEOUT);
 
                 int bytesCount = socketChannel.read(inputBuffer);
                 System.out.println(new String(inputBuffer.array(), 0, bytesCount,
