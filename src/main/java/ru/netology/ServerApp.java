@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 public class ServerApp {
     public static void main(String[] args) throws IOException {
         final ServerSocketChannel serverChannel = ServerSocketChannel.open();
-        serverChannel.bind(new InetSocketAddress("localhost", 23334));
+        serverChannel.bind(new InetSocketAddress(Constants.HOSTNAME, Constants.PORT));
 
         while (true) {
             try (SocketChannel socketChannel = serverChannel.accept()) {

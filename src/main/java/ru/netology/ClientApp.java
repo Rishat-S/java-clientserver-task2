@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ClientApp {
     public static void main(String[] args) throws IOException {
-        InetSocketAddress socketAddress = new InetSocketAddress("127.0.0.1", 23334);
+        InetSocketAddress socketAddress = new InetSocketAddress(Constants.HOSTNAME, Constants.PORT);
         final SocketChannel socketChannel = SocketChannel.open();
 
         try (socketChannel; Scanner scanner = new Scanner(System.in)) {
